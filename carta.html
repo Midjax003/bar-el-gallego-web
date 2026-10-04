@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carta · Bar El Gallego</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F1; --card:#FFFFFF; --ink:#26302E; --muted:#66736F;
+  --sage:#A9C5B2; --mist:#D3E3E8; --peach:#F5D3B5; --line:#E1E8E3; --accent:#3F6F5E;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#182220; --card:#212E2B; --ink:#EAF1ED; --muted:#9DB0A9; --sage:#4C6B5B; --mist:#2C4149; --peach:#6B5340; --line:#2E3D39; --accent:#9CCDB6;}}
+:root[data-theme="dark"]{--bg:#182220; --card:#212E2B; --ink:#EAF1ED; --muted:#9DB0A9; --sage:#4C6B5B; --mist:#2C4149; --peach:#6B5340; --line:#2E3D39; --accent:#9CCDB6;}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.1;letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+.wrap{max-width:780px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-family:'Fraunces',serif;font-size:1.15rem;text-decoration:none}
+.back{font-size:.92rem;color:var(--muted);text-decoration:none;padding:8px 14px;border-radius:99px}
+.back:hover{background:var(--card);color:var(--ink)}
+header.top{padding:20px 0 44px}
+h1{font-size:clamp(2.2rem,6vw,3.2rem)}
+.lead{color:var(--muted);max-width:46ch;margin-top:14px}
+.note{background:var(--card);border-radius:20px;padding:16px 20px;margin-top:24px;font-size:.92rem;color:var(--muted)}
+section.cat{padding:0 0 48px}
+.cat h2{font-size:1.5rem;margin-bottom:4px}
+.cat .desc{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.items{background:var(--card);border-radius:28px;overflow:hidden}
+.item{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:18px 24px;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item h3{font-size:1.08rem;font-weight:500;font-family:'DM Sans',sans-serif}
+.item p{color:var(--muted);font-size:.9rem;margin-top:3px}
+.item .tag{flex:0 0 auto;font-size:.8rem;background:var(--bg);color:var(--muted);padding:4px 12px;border-radius:99px;white-space:nowrap}
+footer{padding:20px 0 44px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:99px;font:600 .96rem 'DM Sans',sans-serif;text-decoration:none;border:0;cursor:pointer}
+.primary{background:var(--accent);color:var(--bg)}
+.soft{background:var(--card);color:var(--ink)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html">Bar El Gallego</a>
+    <a class="back" href="index.html">← Volver al inicio</a>
+  </nav>
+
+  <header class="top">
+    <h1>La carta</h1>
+    <p class="lead">Comida casera de toda la vida: desayunos, platos del día y bocadillos, servidos en C. Lapilli, La Laguna.</p>
+    <p class="note">Los precios rondan entre 1 y 10 € por persona. El plato del día cambia a diario; pregunta en barra por el de hoy.</p>
+  </header>
+
+  <section class="cat">
+    <h2>Desayunos</h2>
+    <p class="desc">Para empezar el día, de camino al trabajo o antes de almorzar.</p>
+    <div class="items">
+      <div class="item"><div><h3>Café</h3><p>Recomendado también por quienes solo paran a tomar algo por la mañana.</p></div><span class="tag">Clásico</span></div>
+      <div class="item"><div><h3>Bocadillos de desayuno</h3><p>Sencillos, bien hechos y a buen precio.</p></div></div>
+      <div class="item"><div><h3>Arepas</h3><p>Una de las cosas más recomendadas por los clientes habituales.</p></div><span class="tag">Recomendada</span></div>
+    </div>
+  </section>
+
+  <section class="cat">
+    <h2>Platos caseros</h2>
+    <p class="desc">Para almorzar como en casa, con el ritmo rápido de un bar de barrio.</p>
+    <div class="items">
+      <div class="item"><div><h3>Caldero</h3><p>Se hace a diario; varios clientes dicen que no lo encuentran igual en otro sitio.</p></div><span class="tag">A diario</span></div>
+      <div class="item"><div><h3>Pulpo a la gallega</h3><p>Entre los platos del día, servido con rapidez.</p></div></div>
+      <div class="item"><div><h3>Ensaladilla</h3><p>Casera, uno de los acompañamientos más pedidos.</p></div></div>
+      <div class="item"><div><h3>Carne fiesta de pollo</h3><p>Otro de los clásicos de la carta de platos caseros.</p></div></div>
+    </div>
+  </section>
+
+  <section class="cat">
+    <h2>Bocadillos</h2>
+    <p class="desc">Para comer allí o para llevar.</p>
+    <div class="items">
+      <div class="item"><div><h3>Atún con mojo</h3><p>El más recomendado en las reseñas, con diferencia.</p></div><span class="tag">El más pedido</span></div>
+      <div class="item"><div><h3>Otros bocadillos</h3><p>Pregunta en barra por el resto de variedades disponibles cada día.</p></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Calle+Lapilli+38108+La+Laguna+Tenerife">Cómo llegar</a>
+    <a class="btn soft" href="index.html">Volver al inicio</a>
+  </footer>
+</div>
+</body>
+</html>
