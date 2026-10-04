@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bar El Gallego · Comida casera en La Laguna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F1; --card:#FFFFFF; --ink:#26302E; --muted:#66736F;
+  --sage:#A9C5B2; --mist:#D3E3E8; --peach:#F5D3B5; --line:#E1E8E3; --accent:#3F6F5E;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#182220; --card:#212E2B; --ink:#EAF1ED; --muted:#9DB0A9; --sage:#4C6B5B; --mist:#2C4149; --peach:#6B5340; --line:#2E3D39; --accent:#9CCDB6;}}
+:root[data-theme="dark"]{--bg:#182220; --card:#212E2B; --ink:#EAF1ED; --muted:#9DB0A9; --sage:#4C6B5B; --mist:#2C4149; --peach:#6B5340; --line:#2E3D39; --accent:#9CCDB6;}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.1;letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-family:'Fraunces',serif;font-size:1.25rem;text-decoration:none}
+nav ul{display:flex;gap:6px;list-style:none;padding:0}
+nav a.l{text-decoration:none;padding:8px 14px;border-radius:99px;color:var(--muted);font-size:.95rem}
+nav a.l:hover{background:var(--card);color:var(--ink)}
+@media(max-width:640px){nav ul{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:40px 0 56px}
+@media(max-width:820px){.hero{grid-template-columns:1fr;padding-top:16px}}
+.status{display:inline-flex;align-items:center;gap:10px;background:var(--card);padding:8px 16px 8px 12px;border-radius:99px;font-size:.9rem;margin-bottom:22px}
+.dot{width:10px;height:10px;border-radius:50%;background:#D98B7A}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);max-width:11ch}
+.lead{color:var(--muted);max-width:44ch;margin:20px 0 28px;font-size:1.08rem}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:99px;font:600 .98rem 'DM Sans',sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.btn:active{transform:scale(.97)}
+.primary{background:var(--accent);color:var(--bg)}
+.soft{background:var(--card);color:var(--ink)}
+.soft:hover{background:var(--mist)}
+/* hero art: soft stacked shapes */
+.art{position:relative;aspect-ratio:1;max-width:420px;margin:auto;width:100%}
+.art i{position:absolute;display:block}
+.b1{inset:6% 8% 30% 4%;background:var(--sage);border-radius:58% 42% 55% 45%/50% 55% 45% 50%}
+.b2{inset:34% 2% 6% 22%;background:var(--peach);border-radius:45% 55% 40% 60%/55% 45% 55% 45%}
+.b3{width:34%;aspect-ratio:1;right:10%;top:2%;background:var(--mist);border-radius:50%}
+.art .tag{position:absolute;left:8%;bottom:12%;background:var(--card);padding:16px 20px;border-radius:24px;box-shadow:0 18px 40px -20px rgba(38,48,46,.35)}
+.tag b{display:block;font:400 2.3rem 'Fraunces',serif;line-height:1}
+.tag span{font-size:.85rem;color:var(--muted)}
+.stars{color:#D9A24F;letter-spacing:2px;font-size:.85rem}
+
+/* quick actions */
+.quick{display:flex;gap:10px;flex-wrap:wrap;background:var(--card);padding:12px;border-radius:28px}
+.quick button,.quick a{flex:1 1 130px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 8px;border-radius:20px;background:transparent;border:0;color:var(--ink);font:500 .9rem 'DM Sans',sans-serif;cursor:pointer;text-decoration:none}
+.quick button:hover,.quick a:hover{background:var(--bg)}
+.quick svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.quick button[aria-pressed="true"] svg{fill:var(--accent)}
+
+section{padding:72px 0 0}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:10px}
+.sub{color:var(--muted);max-width:52ch;margin-bottom:32px}
+
+/* menu */
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.dish{background:var(--card);border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.dish:nth-child(1){border-radius:40px 28px 28px 28px}
+.dish .ic{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;font-size:1.5rem;background:var(--mist)}
+.dish:nth-child(2n) .ic{background:var(--peach)}
+.dish:nth-child(3n) .ic{background:var(--sage)}
+.dish h3{font-size:1.3rem}
+.dish p{color:var(--muted);font-size:.95rem}
+.chip{align-self:flex-start;font-size:.8rem;background:var(--bg);padding:4px 12px;border-radius:99px;color:var(--muted)}
+
+/* reviews */
+.rev{display:grid;grid-template-columns:.7fr 1.3fr;gap:24px;align-items:start}
+@media(max-width:820px){.rev{grid-template-columns:1fr}}
+.score{background:var(--sage);color:#1c2a25;border-radius:36px;padding:32px}
+:root[data-theme="dark"] .score{color:#EAF1ED}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .score{color:#EAF1ED}}
+.score b{font:400 4.2rem 'Fraunces',serif;line-height:1}
+.score p{margin-top:8px;font-size:.95rem}
+.quotes{display:grid;gap:14px}
+.q{background:var(--card);border-radius:24px;padding:22px 24px}
+.q p{font-family:'Fraunces',serif;font-size:1.15rem;line-height:1.4}
+.q small{display:block;margin-top:10px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.filters span{background:var(--card);padding:6px 14px;border-radius:99px;font-size:.88rem}
+
+/* info */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.box{background:var(--card);border-radius:28px;padding:26px}
+.box h3{font-size:1.25rem;margin-bottom:12px}
+.row{padding:10px 0;border-top:1px solid var(--line);font-size:.97rem}
+.row:first-of-type{border-top:0}
+.row span{display:block;color:var(--muted);font-size:.85rem}
+.map{background:linear-gradient(135deg,var(--mist),var(--sage));border-radius:28px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:240px}
+
+footer{margin-top:80px;padding:32px 0 40px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:99px;opacity:0;pointer-events:none;transition:.3s;z-index:9}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.svc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.svc span{background:var(--card);padding:6px 14px;border-radius:99px;font-size:.9rem}
+.hours{width:100%;border-collapse:collapse;font-size:.95rem}
+.hours td{padding:8px 0;border-top:1px solid var(--line)}
+.hours tr:first-child td{border-top:0}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours tr.today td{font-weight:600;color:var(--accent)}
+.dot.on{background:#6FAF8A}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Principal">
+    <a class="logo" href="#">Bar El Gallego</a>
+    <ul>
+      <li><a class="l" href="#carta">Cocina</a></li>
+      <li><a class="l" href="#resenas">Reseñas</a></li>
+      <li><a class="l" href="#visitanos">Información</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="status"><span class="dot" id="dot"></span><span id="st">Consultando horario…</span></div>
+      <h1>Comida casera de toda la vida</h1>
+      <p class="lead">Desayunos, bocadillos y platos del día en La Laguna, con trato cercano y limpio. Entre 1 y 10 € por persona.</p>
+      <div class="svc"><span>Comer allí</span><span>Para llevar</span></div>
+      <div class="btns">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Calle+Lapilli+38108+La+Laguna+Tenerife">Cómo llegar</a>
+        <a class="btn soft" href="#visitanos">Ver horario</a>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <i class="b3"></i><i class="b1"></i><i class="b2"></i>
+      <div class="tag"><b>4,5</b><span class="stars">★★★★★</span><br><span>50 reseñas en Google</span></div>
+    </div>
+  </header>
+
+  <div class="quick" role="group" aria-label="Acciones rápidas">
+    <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Calle+Lapilli+38108+La+Laguna+Tenerife"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>Cómo llegar</a>
+    <button id="save" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>Guardar</span></button>
+    <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=bares+cerca+de+Calle+Lapilli+La+Laguna"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>Cercano</a>
+    <button id="phone"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg>Enviar al teléfono</button>
+    <button id="share"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 11l7.4-3.8M8.3 13l7.4 3.8"/></svg>Compartir</button>
+  </div>
+
+  <section id="carta">
+    <h2>Lo que más se pide</h2>
+    <p class="sub">Platos caseros, menú rápido y bocadillos, según lo que más mencionan las reseñas.</p>
+    <div class="menu">
+      <article class="dish"><div class="ic">🍲</div><h3>Caldero a diario</h3><p>Comida casera de caldero que, según quienes vienen, no se encuentra en cualquier sitio.</p><span class="chip">Casero</span></article>
+      <article class="dish"><div class="ic">🐟</div><h3>Atún con mojo</h3><p>Uno de los platos más recomendados en las reseñas.</p><span class="chip">Favorito</span></article>
+      <article class="dish"><div class="ic">🐙</div><h3>Pulpo a la gallega</h3><p>Plato del día servido rápido, ideal para un almuerzo sin prisas ni complicaciones.</p></article>
+      <article class="dish"><div class="ic">🥗</div><h3>Ensaladilla y carne fiesta</h3><p>Clásicos caseros a buen precio, con carne fiesta de pollo.</p></article>
+      <article class="dish"><div class="ic">🫓</div><h3>Arepas y bocadillos</h3><p>Arepas, bocadillos y café para el desayuno o la merienda.</p><span class="chip">Desayunos</span></article>
+    </div>
+  </section>
+
+  <section id="resenas">
+    <h2>Lo que dicen los clientes</h2>
+    <p class="sub">Reseñas de Google. No están verificadas.</p>
+    <div class="rev">
+      <div class="score"><b>4,5</b><p class="stars" style="color:inherit">★★★★★</p><p>Valoración media sobre 50 reseñas</p></div>
+      <div class="quotes">
+        <blockquote class="q"><p>Comida casera muy rica, mis compañeros y yo siempre vamos a comer aquí al salir de trabajar.</p><small>Airan L. · Local Guide</small></blockquote>
+        <blockquote class="q"><p>Espectacular comida, ambiente y caldero casero a diario. El bar de toda la vida.</p><small>Maidygp Gomez Perez · Local Guide</small></blockquote>
+        <blockquote class="q"><p>Mejor bar de la zona para desayunar o almorzar. Trato familiar, acogedor y tranquilo. Recomiendo el atún.</p><small>David Amaro · Local Guide</small></blockquote>
+        <blockquote class="q"><p>Rico rico el atún con mojo, la ensaladilla y la carne fiesta de pollo.</p><small>Yurena López · Local Guide</small></blockquote>
+        <blockquote class="q"><p>Te tratan realmente bien. Muy limpio, la comida y el café buenísimos y precios increíblemente baratos.</p><small>Ana Isabel Rodríguez Chamorro · Local Guide</small></blockquote>
+        <blockquote class="q"><p>Ideal para un almuerzo casero pero bien hecho. Personal cariñoso y platos del menú rápidos.</p><small>Reseña de Google</small></blockquote>
+        <blockquote class="q"><p>Tranquilo, limpio y con la comida súper sabrosa.</p><small>Dani Cabrera · Local Guide</small></blockquote>
+        <blockquote class="q"><p>Buenos bocadillos y las chicas muy amables.</p><small>Enrique Casañas Díaz · Local Guide</small></blockquote>
+      </div>
+    </div>
+    <div class="btns" style="margin-top:24px"><a class="btn soft" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bar+El+Gallego+Calle+Lapilli+La+Laguna">Escribir una reseña</a></div>
+  </section>
+
+  <section id="visitanos">
+    <h2>Ven a comer, o te lo llevamos</h2>
+    <p class="sub">Come en el bar o pide para llevar.</p>
+    <div class="info">
+      <div class="box">
+        <h3>Horario</h3>
+        <table class="hours" id="hours"></table>
+      </div>
+      <div class="box">
+        <h3>Información</h3>
+        <div class="row"><span>Dirección</span>C. Lapilli, 38108 La Laguna, Santa Cruz de Tenerife</div>
+        <div class="row"><span>Precio</span>1–10 € por persona</div>
+        <div class="row"><span>Servicios</span>Comer allí · Para llevar</div>
+        <div class="row"><span>Valoración</span>4,5 sobre 5 · 50 reseñas</div>
+      </div>
+      <div class="map">
+        <div><h3>Cómo llegar</h3><p style="margin-top:8px">Abre la ruta en Google Maps desde tu ubicación.</p></div>
+        <div class="btns">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Calle+Lapilli+38108+La+Laguna+Tenerife">Cómo llegar</a>
+          <a class="btn soft" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Calle+Lapilli+38108+La+Laguna+Tenerife">Ver en el mapa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer><div class="wrap"><span>Bar El Gallego · C. Lapilli, La Laguna</span><span>Reseñas de Google Maps</span></div></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $=id=>document.getElementById(id), toast=$('toast');
+function say(t){toast.textContent=t;toast.classList.add('on');setTimeout(()=>toast.classList.remove('on'),2200)}
+const url=location.href, data={title:document.title,text:'Bar El Gallego en La Laguna',url};
+async function share(msg){
+  try{ if(navigator.share){await navigator.share(data);return} }catch(e){return}
+  try{ await navigator.clipboard.writeText(url); say(msg) }catch(e){ say('No se pudo copiar el enlace') }
+}
+$('share').onclick=()=>share('Enlace copiado');
+$('phone').onclick=()=>share('Enlace copiado. Pégalo en tu teléfono');
+const save=$('save');
+try{ if(localStorage.getItem('saved')==='1'){save.setAttribute('aria-pressed','true');save.lastChild.textContent='Guardado'} }catch(e){}
+save.onclick=()=>{
+  const on=save.getAttribute('aria-pressed')!=='true';
+  save.setAttribute('aria-pressed',on);save.lastChild.textContent=on?'Guardado':'Guardar';
+  try{localStorage.setItem('saved',on?'1':'0')}catch(e){}
+  say(on?'Guardado en este navegador':'Quitado de guardados');
+};
+/* horario: índice 0 = domingo */
+const A=[6*60+15,20*60+27], B=[7*60,22*60];
+const H=[A,A,B,B,A,B,A], N=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const f=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0');
+let now=new Date(), p={};
+try{ new Intl.DateTimeFormat('en-GB',{timeZone:'Atlantic/Canary',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(now).forEach(x=>p[x.type]=x.value) }catch(e){}
+const wd=p.weekday?['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday):now.getDay();
+const mins=p.hour?(+p.hour%24)*60+ +p.minute:now.getHours()*60+now.getMinutes();
+$('hours').innerHTML=[1,2,3,4,5,6,0].map(d=>`<tr class="${d===wd?'today':''}"><td>${N[d][0].toUpperCase()+N[d].slice(1)}</td><td>${f(H[d][0])}–${f(H[d][1])}</td></tr>`).join('');
+const [o,c]=H[wd];
+if(mins>=o&&mins<c){$('st').textContent='Abierto ahora · cierra a las '+f(c);$('dot').classList.add('on')}
+else{const nd=mins<o?wd:(wd+1)%7;$('st').textContent='Cerrado · abre '+(mins<o?'hoy':'mañan'+'a')+' a las '+f(H[nd][0])}
+</script>
+</body>
+</html>
